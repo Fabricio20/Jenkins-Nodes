@@ -1,6 +1,12 @@
 language: bash
 services: docker
 
+before_script:
+  - cp settings.xml maven-jdk11
+  - cp settings.xml maven-jdk8
+  - cp settings.xml gradle-jdk11
+  - cp settings.xml gradle-jdk8
+
 script:
   - docker build -t fabricio20/jenkins-nodes:maven-jdk11 maven-jdk11
   - docker build -t fabricio20/jenkins-nodes:maven-jdk8 maven-jdk8

@@ -13,10 +13,11 @@ These images are Jenkins SSH Nodes that you can use to run your builds on.
 
 All images have gradle/maven installed on `/opt`. (`/opt/maven` and `/opt/gradle`).
 
-If you need, you can mount your `settings.xml` to `/opt/maven/conf/settings.xml`.
+If you need, you can mount your `settings.xml` to `/home/jenkins/.m2/`.
 
-The user:password for these nodes is `jenkins:jenkins`. These are NOT intended to be run open on the internet.
-Fork and change the password if you believe you need these nodes exposed to the internet.
+You can mount your SSH `authorized_keys` file (for SSH Keys Login) to `/home/jenkins/.ssh/`.
+
+Password authentication is disabled for these images.
 
 Maintainers:
 - Fabricio20
