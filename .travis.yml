@@ -9,8 +9,6 @@ script:
 
 deploy:
   provider: script
-  script:
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push fabricio20/jenkins-nodes
+  script: bash docker_push.sh
   on:
     branch: master
