@@ -1,0 +1,16 @@
+language: bash
+services: docker
+
+script:
+  - docker build -t fabricio20/jenkins-nodes:maven-jdk11 maven-jdk11
+  - docker build -t fabricio20/jenkins-nodes:maven-jdk8 maven-jdk8
+  - docker build -t fabricio20/jenkins-nodes:gradle-jdk11 gradle-jdk11
+  - docker build -t fabricio20/jenkins-nodes:gradle-jdk8 gradle-jdk8
+
+deploy:
+  provider: script
+  script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker push fabricio20/jenkins-nodes
+  on:
+    branch: master
