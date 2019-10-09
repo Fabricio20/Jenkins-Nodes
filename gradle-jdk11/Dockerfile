@@ -2,7 +2,7 @@ FROM azul/zulu-openjdk:11
 
 # Install wget + unzip + git + ssh
 RUN apt-get update && \
-    apt-get install -qy wget unzip git openssh-server --no-install-recommends && \
+    apt-get install -qy wget unzip git openssh-server ca-certificates --no-install-recommends && \
 # Install Gradle
     mkdir -p /opt/gradle && \
     wget https://services.gradle.org/distributions/gradle-5.6.2-bin.zip -O /opt/gradle/gradle.zip --no-check-certificate && \
