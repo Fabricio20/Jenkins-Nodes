@@ -4,8 +4,10 @@ These images are Jenkins SSH Nodes that you can use to run your builds on.
 
 ### Tags:
 
+- `gradle-jdk13` Build node with gradle and zulu-jdk13
 - `gradle-jdk11` Build node with gradle and zulu-jdk11
 - `gradle-jdk8` Build node with gradle and zulu-jdk8
+- `maven-jdk13` Build node with maven and zulu-jdk13
 - `maven-jdk11` Build node with maven and zulu-jdk11
 - `maven-jdk8` Build node with maven and zulu-jdk8
 
@@ -21,3 +23,4 @@ Password authentication is disabled for these images.
 
 Maintainers:
 - Fabricio20
+- Christian Tusset
