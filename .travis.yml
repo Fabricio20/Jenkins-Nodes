@@ -9,11 +9,12 @@ before_script:
   - cp settings.xml maven-gradle-docker-jdk13
 
 script:
+  - docker build -t fabricio20/jenkins-nodes:maven-gradle-docker-jdk13 maven-gradle-docker-jdk13
+  - bash docker_push.sh
   - docker build -t fabricio20/jenkins-nodes:maven-jdk11 maven-jdk11
   - docker build -t fabricio20/jenkins-nodes:maven-jdk8 maven-jdk8
   - docker build -t fabricio20/jenkins-nodes:gradle-jdk11 gradle-jdk11
   - docker build -t fabricio20/jenkins-nodes:gradle-jdk8 gradle-jdk8
-  - docker build -t fabricio20/jenkins-nodes:maven-gradle-docker-jdk13
 
 deploy:
   provider: script
