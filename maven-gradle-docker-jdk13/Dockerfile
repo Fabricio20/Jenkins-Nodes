@@ -18,7 +18,7 @@ RUN apt-get update && \
     rm -rf /opt/gradle/gradle.zip && \
     mv /opt/gradle/gradle-5.6.2/* /opt/gradle && \
     rm -rf /opt/gradle/gradle-5.6.2/ && \
-    ln -s /opt/maven/bin/gradle /usr/local/bin/gradle && \
+    ln -s /opt/gradle/bin/gradle /usr/local/bin/gradle && \
 # Install Docker
     wget https://download.docker.com/linux/static/stable/x86_64/docker-19.03.4.tgz --no-check-certificate && \
     tar --strip-components=1 -xvzf docker-19.03.4.tgz -C /usr/local/bin && \
