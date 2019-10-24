@@ -2,7 +2,7 @@ FROM azul/zulu-openjdk:13
 
 # Install wget + git + ssh
 RUN apt-get update && \
-    apt-get install -y wget git openssh-server ca-certificates docker --no-install-recommends && \
+    apt-get install -y wget git openssh-server ca-certificates tar --no-install-recommends && \
 # Install Maven
     mkdir -p /opt/maven && \
     wget https://www-us.apache.org/dist/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz -O /opt/maven/apache-maven.tar.gz --no-check-certificate && \
@@ -20,7 +20,7 @@ RUN apt-get update && \
     rm -rf /opt/gradle/gradle-5.6.2/ && \
     ln -s /opt/maven/bin/gradle /usr/local/bin/gradle && \
 # Install Docker
-    curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-19.03.4.tgz 165 && \
+    wget https://download.docker.com/linux/static/stable/x86_64/docker-19.03.4.tgz --no-check-certificate && \
     tar --strip-components=1 -xvzf docker-19.03.4.tgz -C /usr/local/bin && \
 # Uninstall tools
     apt-get purge wget -qy && \
