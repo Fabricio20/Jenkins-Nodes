@@ -16,6 +16,7 @@ RUN ssh-keygen -A && \
     mkdir -p /var/run/sshd
 
 # Create Jenkins user
+RUN groupadd --gid 999 docker
 RUN adduser -uid 1001 --gid 999 --home /home/jenkins --shell /bin/sh --disabled-password --gecos "Jenkins" jenkins && \
     sed -i "s/.*RSAAuthentication.*/RSAAuthentication yes/g" /etc/ssh/sshd_config && \
     sed -i "s/.*PubkeyAuthentication.*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config && \
