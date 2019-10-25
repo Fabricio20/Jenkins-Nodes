@@ -2,7 +2,7 @@ FROM node
 
 # Install wget + git + ssh
 RUN apt-get update && \
-    apt-get install -y wget git openssh-server ca-certificates tar --no-install-recommends && \
+    apt-get install -y wget git openssh-server ca-certificates tar default-jre --no-install-recommends && \
 # Install Docker
     wget https://download.docker.com/linux/static/stable/x86_64/docker-19.03.4.tgz --no-check-certificate && \
     tar --strip-components=1 -xvzf docker-19.03.4.tgz -C /usr/local/bin && \
