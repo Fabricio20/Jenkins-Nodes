@@ -25,9 +25,9 @@ RUN adduser -uid 1001 --gid 999 --home /home/jenkins --shell /bin/sh --disabled-
 
 RUN mkdir -p /home/jenkins/.ssh/ && \
     touch /home/jenkins/.ssh/authorized_keys && \
-    chown -R jenkins:jenkins /home/jenkins/.ssh/ && \
+    chown -R jenkins:docker /home/jenkins/.ssh/ && \
     touch /var/run/docker.sock && \
-    chown -R jenkins:jenkins /var/run/docker.sock
+    chown -R jenkins:docker /var/run/docker.sock
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
