@@ -1,18 +1,28 @@
-FROM azul/zulu-openjdk:13
+FROM azul/zulu-openjdk:11
 
 # Install wget + git + ssh
 RUN apt-get update && \
-    apt-get install -y wget git openssh-server ca-certificates --no-install-recommends && \
+    apt-get install -y wget git openssh-server ca-certificates tar unzip --no-install-recommends && \
 # Install Maven
     mkdir -p /opt/maven && \
-    wget https://www-us.apache.org/dist/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz -O /opt/maven/apache-maven.tar.gz --no-check-certificate && \
+    wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -O /opt/maven/apache-maven.tar.gz --no-check-certificate && \
     tar -xf /opt/maven/apache-maven.tar.gz -C /opt/maven && \
     rm -rf /opt/maven/apache-maven.tar.gz && \
-    mv /opt/maven/apache-maven-3.6.2/* /opt/maven && \
-    rm -rf /opt/maven/apache-maven-3.6.2/ && \
+    mv /opt/maven/apache-maven-3.6.3/* /opt/maven && \
+    rm -rf /opt/maven/apache-maven-3.6.3/ && \
     ln -s /opt/maven/bin/mvn /usr/local/bin/mvn && \
+# Install Gradle
+    mkdir -p /opt/gradle && \
+    wget https://services.gradle.org/distributions/gradle-5.6.2-bin.zip -O /opt/gradle/gradle.zip --no-check-certificate && \
+    unzip /opt/gradle/gradle.zip -d /opt/gradle && \
+    rm -rf /opt/gradle/gradle.zip && \
+    mv /opt/gradle/gradle-5.6.2/* /opt/gradle && \
+    rm -rf /opt/gradle/gradle-5.6.2/ && \
+    ln -s /opt/gradle/bin/gradle /usr/local/bin/gradle && \
+# Install Docker CLI
+    wget https://download.docker.com/linux/static/stable/x86_64/docker-19.03.4.tgz --no-check-certificate && \
+    tar --strip-components=1 -xvzf docker-19.03.4.tgz -C /usr/local/bin && \
 # Uninstall tools
-    apt-get purge wget -qy && \
     apt-get autoremove -qy
 
 # Generate Host SSH Keys
@@ -32,7 +42,9 @@ ADD settings.xml /home/jenkins/.m2/
 RUN mkdir -p /home/jenkins/.ssh/ && \
     touch /home/jenkins/.ssh/authorized_keys && \
     chown -R jenkins:jenkins /home/jenkins/.m2/ && \
-    chown -R jenkins:jenkins /home/jenkins/.ssh/
+    chown -R jenkins:jenkins /home/jenkins/.ssh/ && \
+    touch /var/run/docker.sock && \
+    chown -R jenkins:jenkins /var/run/docker.sock
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]

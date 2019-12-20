@@ -1,23 +1,12 @@
 language: bash
 services: docker
 
-before_script:
-  - cp settings.xml maven-jdk11
-  - cp settings.xml maven-jdk8
-  - cp settings.xml gradle-jdk11
-  - cp settings.xml gradle-jdk8
-  - cp settings.xml maven-gradle-docker-jdk13
-
 script:
+  - cd java-8 && bash build.sh && cd .. && bash docker_push.sh
+  - cd java-11 && bash build.sh && cd .. && bash docker_push.sh
   - cd java-13 && bash build.sh && cd .. && bash docker_push.sh
   - docker build -t fabricio20/jenkins-nodes:nodejs-docker nodejs-docker
   - bash docker_push.sh
-  - docker build -t fabricio20/jenkins-nodes:maven-gradle-docker-jdk13 maven-gradle-docker-jdk13
-  - bash docker_push.sh
-  - docker build -t fabricio20/jenkins-nodes:maven-jdk11 maven-jdk11
-  - docker build -t fabricio20/jenkins-nodes:maven-jdk8 maven-jdk8
-  - docker build -t fabricio20/jenkins-nodes:gradle-jdk11 gradle-jdk11
-  - docker build -t fabricio20/jenkins-nodes:gradle-jdk8 gradle-jdk8
 
 deploy:
   provider: script

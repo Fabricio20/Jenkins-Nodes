@@ -4,6 +4,12 @@ These images are Jenkins SSH Nodes that you can use to run your builds on.
 
 ### Tags:
 
+- `java-8` Build node with `zulu-8`, `maven`, `gradle`, `docker-cli`, `wget`, `bash`.
+- `java-11` Build node with `zulu-11`, `maven`, `gradle`, `docker-cli`, `wget`, `bash`.
+- `java-13` Build node with `zulu-13`, `maven`, `gradle`, `docker-cli`, `wget`, `bash`.
+
+### Legacy Tags:
+
 - `gradle-jdk13` Build node with gradle and zulu-jdk13
 - `gradle-jdk11` Build node with gradle and zulu-jdk11
 - `gradle-jdk8` Build node with gradle and zulu-jdk8
