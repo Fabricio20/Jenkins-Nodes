@@ -5,11 +5,11 @@ RUN apt-get update && \
     apt-get install -y wget git openssh-server ca-certificates tar unzip --no-install-recommends && \
 # Install Maven
     mkdir -p /opt/maven && \
-    wget https://www-us.apache.org/dist/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz -O /opt/maven/apache-maven.tar.gz --no-check-certificate && \
+    wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -O /opt/maven/apache-maven.tar.gz --no-check-certificate && \
     tar -xf /opt/maven/apache-maven.tar.gz -C /opt/maven && \
     rm -rf /opt/maven/apache-maven.tar.gz && \
-    mv /opt/maven/apache-maven-3.6.2/* /opt/maven && \
-    rm -rf /opt/maven/apache-maven-3.6.2/ && \
+    mv /opt/maven/apache-maven-3.6.3/* /opt/maven && \
+    rm -rf /opt/maven/apache-maven-3.6.3/ && \
     ln -s /opt/maven/bin/mvn /usr/local/bin/mvn && \
 # Install Gradle
     mkdir -p /opt/gradle && \

@@ -1,11 +1,12 @@
 # Jenkins Nodes [![Build Status](https://travis-ci.com/Fabricio20/Jenkins-Nodes.svg?branch=master)](https://travis-ci.com/Fabricio20/Jenkins-Nodes)
-
+<br>
 This is the Dockerfile for the `java-13` tag.
 <br>
 **Features**:
-- Maven 3.6.2 [`/opt/maven`]
+- Maven 3.6.3 [`/opt/maven`]
 - Gradle 5.6.2 [`/opt/gradle`]
 - Docker CLI [Mount your Unix Socket to `/var/run/docker.sock`]
+- Bash and Wget
 
 ### Notes
 
