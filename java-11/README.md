@@ -1,14 +1,13 @@
 # Jenkins Nodes [![Build Status](https://travis-ci.com/Fabricio20/Jenkins-Nodes.svg?branch=master)](https://travis-ci.com/Fabricio20/Jenkins-Nodes)
 
-<br>
 This is the Dockerfile for the `java-11` tag.
-<br>
+
 **Features**:
 - Zulu OpenJDK 11
 - Maven 3.6.3 [`/opt/maven`]
 - Gradle 5.6.2 [`/opt/gradle`]
 - Docker CLI [Mount your Unix Socket to `/var/run/docker.sock`]
-- Bash and Wget
+- Bash, Wget, Tar, Zip/Unzip, Git
 
 ### Notes
 

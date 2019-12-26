@@ -2,7 +2,7 @@ FROM azul/zulu-openjdk:8
 
 # Install wget + git + ssh
 RUN apt-get update && \
-    apt-get install -y wget git openssh-server ca-certificates tar unzip --no-install-recommends && \
+    apt-get install -y wget git openssh-server ca-certificates tar zip unzip --no-install-recommends && \
 # Install Maven
     mkdir -p /opt/maven && \
     wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -O /opt/maven/apache-maven.tar.gz --no-check-certificate && \
