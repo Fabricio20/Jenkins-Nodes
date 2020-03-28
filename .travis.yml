@@ -5,6 +5,7 @@ script:
   - cd java-8 && bash build.sh && cd .. && bash docker_push.sh
   - cd java-11 && bash build.sh && cd .. && bash docker_push.sh
   - cd java-13 && bash build.sh && cd .. && bash docker_push.sh
+  - cd java-14 && bash build.sh && cd .. && bash docker_push.sh
   - docker build -t fabricio20/jenkins-nodes:nodejs-docker nodejs-docker
   - bash docker_push.sh
 
